@@ -16,4 +16,8 @@ cat ref_sequences/$2*.fasta >> $2.refs
 # The above lines make cumulative .refs files containing all reference
 # sequences for the mcrA and hsp70 genes, respectively.
 
+./muscle -in $1.refs -out $1alignment.msa
+./muscle -in $2.refs -out $2alignment.msa
 
+# The above two lines generate .msa files with the sequence alignments for the
+# mcrA and hsp70 genes, respectively.
