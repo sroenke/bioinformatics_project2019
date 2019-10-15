@@ -21,3 +21,9 @@ cat ref_sequences/$2*.fasta >> $2.refs
 
 # The above two lines generate .msa files with the sequence alignments for the
 # mcrA and hsp70 genes, respectively.
+
+./hmmbuild $1.hmm $1alignment.msa
+./hmmbuild $2.hmm $2alignment.msa
+
+# The above two lines make hidden Markov models for mcrA and hsp70 in the form
+# of .hmm files.
