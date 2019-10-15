@@ -49,3 +49,14 @@ done
 # The above for-loop identifies all proteomes containing the mcrA protein and
 # saves the names of those proteomes to a text file called
 # candidate_proteomes.txt.
+
+mkdir $2_search_results
+d=$( cat candidate_proteomes.txt )
+for file in $d
+do
+./hmmsearch $2.hmm $3/$file.fasta > $2_search_results/$file.out
+done
+
+# The above for-loop takes the proteome files that contain the code for the 
+# mcrA protein and searches then for the hsp70 protein. The results are
+# saved as .out files in a directory called hsp70_search_results.
