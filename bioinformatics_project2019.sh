@@ -7,8 +7,8 @@
 # Adjustments to the code may be necessary depending on the user's 
 # file and directory organization.
 
-# Usage: bash bioinformatics_project2019.sh <GENE_1> <GENE_2>
-# Example: bash bioinformatics_project2019.sh mcrA hsp70
+# Usage: bash bioinformatics_project2019.sh <GENE_1> <GENE_2> <Proteome_Directory>
+# Example: bash bioinformatics_project2019.sh mcrA hsp70 proteomes
 
 cat ref_sequences/$1*.fasta >> $1.refs
 cat ref_sequences/$2*.fasta >> $2.refs
@@ -27,3 +27,15 @@ cat ref_sequences/$2*.fasta >> $2.refs
 
 # The above two lines make hidden Markov models for mcrA and hsp70 in the form
 # of .hmm files.
+
+mkdir $1_search_results
+for file in $3/*
+do
+a=$( echo $file | cut -d . -f 1 | cut -d / -f 2 )
+./hmmsearch $1.hmm $file > $a.out
+mv $a.out $1_search_results
+done
+
+# The above for-loop searches each proteome fasta file for the mcrA sequence and
+# saves the search results to a uniquely named file in a directory called 
+# mcrA_search_results.
