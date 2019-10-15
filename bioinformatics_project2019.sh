@@ -10,8 +10,10 @@
 # Usage: bash bioinformatics_project2019.sh <GENE_1> <GENE_2>
 # Example: bash bioinformatics_project2019.sh mcrA hsp70
 
-cat ref_sequences/$1*.fasta >> $1.fasta
-cat ref_sequences/$2*.fasta >> $2.fasta
+cat ref_sequences/$1*.fasta >> $1.refs
+cat ref_sequences/$2*.fasta >> $2.refs
 
-# The above lines make cumulative .fasta files containing all reference
+# The above lines make cumulative .refs files containing all reference
 # sequences for the mcrA and hsp70 genes, respectively.
+
+
