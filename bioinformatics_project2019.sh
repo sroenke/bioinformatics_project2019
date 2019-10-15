@@ -39,3 +39,13 @@ done
 # The above for-loop searches each proteome fasta file for the mcrA sequence and
 # saves the search results to a uniquely named file in a directory called 
 # mcrA_search_results.
+
+for file in $1_search_results/*
+do
+b=$( cat $file | grep -E "No hits detected" )
+echo $file $b | grep -vE "No" | cut -d . -f 1 | cut -d / -f 2 >> candidate_proteomes.txt
+done
+
+# The above for-loop identifies all proteomes containing the mcrA protein and
+# saves the names of those proteomes to a text file called
+# candidate_proteomes.txt.
