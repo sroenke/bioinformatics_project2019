@@ -78,7 +78,7 @@ cat proteome_hsp70_rankings.txt
 
 # The following lines delete all extra files produced by this script
 # during its operation. If one desires to keep those files, these lines
-# should be removed are marked with # so they are ignored. 
+# should be removed or marked with # so they are ignored. 
 
 rm -r hsp70*
 rm -r mcrA*
