@@ -69,7 +69,7 @@ f=$( echo $file | cut -d . -f 1 | cut -d / -f 2 )
 echo "$e,$f" >> proteome_hsp70_counts.txt
 done
 cat proteome_hsp70_counts.txt | sort -n -r | uniq >> proteome_hsp70_rankings.txt
-cat proteome_hsp70_rankings.txt | cut -d , -f 2 | grep -E "_" > proposed_proteomes.txt
+cat proteome_hsp70_rankings.txt | grep -vE "0," | cut -d , -f 2 | grep -E "_" > proposed_proteomes.txt
 cat proteome_hsp70_rankings.txt
 
 # The above for-loop finds the number of hsp70 copies in each mcrA+ proteome
