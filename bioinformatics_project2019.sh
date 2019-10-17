@@ -80,7 +80,6 @@ cat proteome_hsp70_rankings.txt
 # during its operation. If one desires to keep those files, these lines
 # should be removed or marked with # so they are ignored. 
 
-rm -r hsp70*
-rm -r mcrA*
-rm candidate_proteomes.txt
-rm prot*.txt
+rm -r $1.refs $2.refs $1alignment.msa $2alignment.msa $1.hmm $2.hmm candidate_proteomes.txt proteome_hsp70_counts.txt
+rm -r $1_search_results $2_search_results
+# rm proteome_hsp70_rankings.txt
