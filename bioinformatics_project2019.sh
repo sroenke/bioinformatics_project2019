@@ -60,3 +60,27 @@ done
 # The above for-loop takes the proteome files that contain the code for the 
 # mcrA protein and searches then for the hsp70 protein. The results are
 # saved as .out files in a directory called hsp70_search_results.
+
+echo "hsp70_copies,proteome" >> proteome_hsp70_rankings.txt
+for file in $2_search_results/*
+do
+e=$( cat $file | grep -E ">>" | wc -l )
+f=$( echo $file | cut -d . -f 1 | cut -d / -f 2 )
+echo "$e,$f" >> proteome_hsp70_counts.txt
+done
+cat proteome_hsp70_counts.txt | sort -n -r | uniq >> proteome_hsp70_rankings.txt
+cat proteome_hsp70_rankings.txt | cut -d , -f 2 | grep -E "_" > proposed_proteomes.txt
+cat proteome_hsp70_rankings.txt
+
+# The above for-loop finds the number of hsp70 copies in each mcrA+ proteome
+# and lists the proteome and hsp70 copy number in a tabular format with 
+# columns separated by columns. This table is then printed to the display.
+
+# The following lines delete all extra files produced by this script
+# during its operation. If one desires to keep those files, these lines
+# should be removed are marked with # so they are ignored. 
+
+rm -r hsp70*
+rm -r mcrA*
+rm candidate_proteomes.txt
+rm prot*.txt
